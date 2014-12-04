@@ -335,8 +335,10 @@ public class Infoflow extends AbstractInfoflow {
         for (Transform tr : preProcessors)
             tr.apply();
 
-        if (callgraphAlgorithm != CallgraphAlgorithm.OnDemand)
+        if (callgraphAlgorithm != CallgraphAlgorithm.OnDemand) {
         	logger.info("Callgraph has {} edges", Scene.v().getCallGraph().size());
+        	System.out.println(Scene.v().getCallGraph().toString());
+        }
         iCfg = icfgFactory.buildBiDirICFG(callgraphAlgorithm);
         
         int numThreads = Runtime.getRuntime().availableProcessors();
